@@ -28,19 +28,40 @@ const readline = require('readline-sync');
 
 const hasTorch = true;
 const hasMap = false;
+const hasRope = true;
+const hasGoldCoins = true;
 
 console.log("You see two paths: one leads to the mountains, the other to the village.");
 const choice = readline.question("Do you go to the 'mountains' or the 'village'?");
 
 if (choice === "mountains" && hasTorch) {
   console.log("You safely navigate through the dark mountains.");
-} else if (choice === "mountains" && !hasTorch) {
+  console.log("Once through the mountains, you find yourself at an eerie cave.");
+  const choice2 = readline.question("Do you bravely enter the 'cave' to explore, or do you keep on your path to the 'river'?")
+  
+  if (choice2 === "cave" && hasRope) {
+    console.log("You have your rope with you, so why not go exploring?!");
+  }
+  else if (choice2 === "cave" && !hasRope) {
+    console.log("The cave is looking a bit too crazy for your liking, so you decide to keep trudging on to the river");
+  }
+  else if (choice2 === "river" && hasGoldCoins) {
+    console.log("You safely get to the river where you meet a magical Unicorn!");
+    console.log("The magical Unicorn is in distress!  An evil Gnome has stolen her baby, and she needs someone to help her get it back!");
+    const choice3 = readline.question("Do you decide to 'help her', or tell her you'll go to the village to 'seek help and weapons'??");
+  }
+} 
+if (choice === "mountains" && !hasTorch) {
   console.log("It's too dark to proceed. You decide to turn back.");
-} else if (choice === "village" || hasMap) {
+}
+if (choice === "village" || hasMap) {
   console.log("You find your way to the village.");
-} else {
+} 
+else if (choice === "village" && !hasMap) {
   console.log("You get lost and wander aimlessly.");
 }
+ 
+  
 
 /* 
 
